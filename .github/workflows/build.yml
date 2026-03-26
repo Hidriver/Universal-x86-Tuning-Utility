@@ -32,11 +32,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj"
 
-    - name: Build
-      run: |
-        dotnet build "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -p:TreatWarningsAsErrors=false -p:WarningLevel=0 --no-restore
-        if ($LASTEXITCODE -ne 0) { exit 1 }
-
     - name: Publish
       run: dotnet publish "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:TreatWarningsAsErrors=false -p:WarningLevel=0 -o ./publish
 
