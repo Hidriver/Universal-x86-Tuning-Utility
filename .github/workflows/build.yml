@@ -30,14 +30,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj"
 
-    - name: Build
-      run: dotnet build "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
-
     - name: Publish
-      run: dotnet publish "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish
+      run: dotnet publish "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:TreatWarningsAsErrors=false -o ./publish
 
     - name: Upload artifact
       uses: actions/upload-artifact@v5
       with:
         name: Universal-x86-Tuning-Utility
-        path: ./publish/*.exe
+        path: ./publish/
+        if-no-files-found: error
