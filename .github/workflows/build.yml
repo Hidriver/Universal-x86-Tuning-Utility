@@ -13,6 +13,8 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
   build:
@@ -31,7 +33,7 @@ jobs:
       run: dotnet restore "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj"
 
     - name: Publish
-      run: dotnet publish "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:TreatWarningsAsErrors=false -o ./publish
+      run: dotnet publish "Universal x86 Tuning Utility/Universal x86 Tuning Utility.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:TreatWarningsAsErrors=false -p:WarningLevel=0 -o ./publish
 
     - name: Upload artifact
       uses: actions/upload-artifact@v5
