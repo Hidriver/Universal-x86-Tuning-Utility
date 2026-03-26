@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -10,6 +10,7 @@ using System;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Security.Policy;
@@ -48,6 +49,36 @@ namespace Universal_x86_Tuning_Utility
         public static XgMobileConnectionService xgMobileConnectionService;
         private static ILogger<App>? _logger;
         public static Mem_Timings memTimings = new Mem_Timings();
+
+        public static void LoadLanguage(string cultureName)
+        {
+            var resourcePath = cultureName == "zh-CN" || cultureName.StartsWith("zh")
+                ? "Resources/Strings.zh-CN.xaml"
+                : "Resources/Strings.en.xaml";
+
+            var newDict = new ResourceDictionary
+            {
+                Source = new Uri(resourcePath, UriKind.Relative)
+            };
+
+            var oldDict = Application.Current.Resources.MergedDictionaries
+                .FirstOrDefault(d => d.Source?.OriginalString.Contains("Strings.") == true);
+
+            if (oldDict != null)
+            {
+                var index = Application.Current.Resources.MergedDictionaries.IndexOf(oldDict);
+                Application.Current.Resources.MergedDictionaries.RemoveAt(index);
+                Application.Current.Resources.MergedDictionaries.Insert(index, newDict);
+            }
+            else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(newDict);
+            }
+
+            LocalizationService.Instance.SetLanguage(cultureName);
+            Settings.Default.Language = cultureName;
+            Settings.Default.Save();
+        }
 
         /// <summary>
         /// Gets registered service.
@@ -272,6 +303,19 @@ namespace Universal_x86_Tuning_Utility
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Failed to check for updates");
+                }
+
+                try
+                {
+                    string savedLanguage = Settings.Default.Language;
+                    if (!string.IsNullOrEmpty(savedLanguage))
+                    {
+                        LoadLanguage(savedLanguage);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to load language setting");
                 }
 
                 await _host.StartAsync();

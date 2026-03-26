@@ -1,10 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
 using Universal_x86_Tuning_Utility.Scripts;
+using Universal_x86_Tuning_Utility.Services;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Controls.Interfaces;
@@ -36,194 +37,175 @@ namespace Universal_x86_Tuning_Utility.ViewModels
 
         public MainWindowViewModel(INavigationService navigationService)
         {
+            LocalizationService.Instance.LanguageChanged += OnLanguageChanged;
+
             if (!_isInitialized)
                 InitializeViewModel();
         }
 
-        private void InitializeViewModel()
+        private void OnLanguageChanged(object? sender, EventArgs e)
         {
-            ApplicationTitle = "Universal x86 Tuning Utility";
+            RefreshNavigationItems();
+        }
+
+        private void RefreshNavigationItems()
+        {
+            var loc = LocalizationService.Instance;
+
             if (Family.TYPE == Family.ProcessorType.Intel)
             {
                 NavigationItems = new ObservableCollection<INavigationControl>
                 {
-                new NavigationItem()
-                {
-                    Content = "Home",
-                    PageTag = "dashboard",
-                    Icon = SymbolRegular.Home20,
-                    PageType = typeof(Views.Pages.DashboardPage)
-                },
-                //new NavigationItem()
-                //{
-                //    Content = "Premade",
-                //    PageTag = "premade",
-                //    Icon = SymbolRegular.Predictions20,
-                //    PageType = typeof(Views.Pages.Premade)
-                //},
-                new NavigationItem()
-                {
-                    Content = "Custom",
-                    PageTag = "custom",
-                    Icon = SymbolRegular.Book20,
-                    PageType = typeof(Views.Pages.CustomPresets)
-                },
-                new NavigationItem()
-                {
-                    Content = "Adaptive",
-                    PageTag = "adaptive",
-                    Icon = SymbolRegular.Radar20,
-                    PageType = typeof(Views.Pages.Adaptive)
-                },
-                new NavigationItem()
-                {
-                    Content = "Games",
-                    PageTag = "games",
-                    Icon = SymbolRegular.Games20,
-                    PageType = typeof(Views.Pages.Games)
-                },
-                new NavigationItem()
-                {
-                    Content = "Auto",
-                    PageTag = "auto",
-                    Icon = SymbolRegular.Transmission20,
-                    PageType = typeof(Views.Pages.Automations)
-                },
-                //new NavigationItem()
-                //{
-                //    Content = "Fan",
-                //    PageTag = "fan",
-                //    Icon = SymbolRegular.WeatherDuststorm20,
-                //    PageType = typeof(Views.Pages.FanControl)
-                //},
-                // new NavigationItem()
-                //{
-                //    Content = "Magpie",
-                //    PageTag = "magpie",
-                //    Icon = SymbolRegular.FullScreenMaximize20,
-                //    PageType = typeof(Views.Pages.DataPage)
-                //},
-                new NavigationItem()
-                {
-                    Content = "Info",
-                    PageTag = "info",
-                    Icon = SymbolRegular.Info20,
-                    PageType = typeof(Views.Pages.SystemInfo)
-                }
-            };
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Home"],
+                        PageTag = "dashboard",
+                        Icon = SymbolRegular.Home20,
+                        PageType = typeof(Views.Pages.DashboardPage)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Custom"],
+                        PageTag = "custom",
+                        Icon = SymbolRegular.Book20,
+                        PageType = typeof(Views.Pages.CustomPresets)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Adaptive"],
+                        PageTag = "adaptive",
+                        Icon = SymbolRegular.Radar20,
+                        PageType = typeof(Views.Pages.Adaptive)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Games"],
+                        PageTag = "games",
+                        Icon = SymbolRegular.Games20,
+                        PageType = typeof(Views.Pages.Games)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Auto"],
+                        PageTag = "auto",
+                        Icon = SymbolRegular.Transmission20,
+                        PageType = typeof(Views.Pages.Automations)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Info"],
+                        PageTag = "info",
+                        Icon = SymbolRegular.Info20,
+                        PageType = typeof(Views.Pages.SystemInfo)
+                    }
+                };
 
                 NavigationFooter = new ObservableCollection<INavigationControl>
-            {
-                new NavigationItem()
                 {
-                    Content = "Settings",
-                    PageTag = "settings",
-                    Icon = SymbolRegular.Settings20,
-                    PageType = typeof(Views.Pages.SettingsPage)
-                }
-            };
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Settings"],
+                        PageTag = "settings",
+                        Icon = SymbolRegular.Settings20,
+                        PageType = typeof(Views.Pages.SettingsPage)
+                    }
+                };
 
                 TrayMenuItems = new ObservableCollection<MenuItem>
-            {
-                new MenuItem
                 {
-                    Header = "Home",
-                    Tag = "tray_home"
-                }
-            };
+                    new MenuItem
+                    {
+                        Header = loc["Nav_Home"],
+                        Tag = "tray_home"
+                    }
+                };
             }
             else
             {
                 NavigationItems = new ObservableCollection<INavigationControl>
                 {
-                new NavigationItem()
-                {
-                    Content = "Home",
-                    PageTag = "dashboard",
-                    Icon = SymbolRegular.Home20,
-                    PageType = typeof(Views.Pages.DashboardPage)
-                },
-                new NavigationItem()
-                {
-                    Content = "Premade",
-                    PageTag = "premade",
-                    Icon = SymbolRegular.Predictions20,
-                    PageType = typeof(Views.Pages.Premade)
-                },
-                new NavigationItem()
-                {
-                    Content = "Custom",
-                    PageTag = "custom",
-                    Icon = SymbolRegular.Book20,
-                    PageType = typeof(Views.Pages.CustomPresets)
-                },
-                new NavigationItem()
-                {
-                    Content = "Adaptive",
-                    PageTag = "adaptive",
-                    Icon = SymbolRegular.Radar20,
-                    PageType = typeof(Views.Pages.Adaptive)
-                },
-                new NavigationItem()
-                {
-                    Content = "Games",
-                    PageTag = "games",
-                    Icon = SymbolRegular.Games20,
-                    PageType = typeof(Views.Pages.Games)
-                },
-                new NavigationItem()
-                {
-                    Content = "Auto",
-                    PageTag = "auto",
-                    Icon = SymbolRegular.Transmission20,
-                    PageType = typeof(Views.Pages.Automations)
-                },
-                //new NavigationItem()
-                //{
-                //    Content = "Fan",
-                //    PageTag = "fan",
-                //    Icon = SymbolRegular.WeatherDuststorm20,
-                //    PageType = typeof(Views.Pages.FanControl)
-                //},
-                // new NavigationItem()
-                //{
-                //    Content = "Magpie",
-                //    PageTag = "magpie",
-                //    Icon = SymbolRegular.FullScreenMaximize20,
-                //    PageType = typeof(Views.Pages.DataPage)
-                //},
-                new NavigationItem()
-                {
-                    Content = "Info",
-                    PageTag = "info",
-                    Icon = SymbolRegular.Info20,
-                    PageType = typeof(Views.Pages.SystemInfo)
-                }
-            };
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Home"],
+                        PageTag = "dashboard",
+                        Icon = SymbolRegular.Home20,
+                        PageType = typeof(Views.Pages.DashboardPage)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Premade"],
+                        PageTag = "premade",
+                        Icon = SymbolRegular.Predictions20,
+                        PageType = typeof(Views.Pages.Premade)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Custom"],
+                        PageTag = "custom",
+                        Icon = SymbolRegular.Book20,
+                        PageType = typeof(Views.Pages.CustomPresets)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Adaptive"],
+                        PageTag = "adaptive",
+                        Icon = SymbolRegular.Radar20,
+                        PageType = typeof(Views.Pages.Adaptive)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Games"],
+                        PageTag = "games",
+                        Icon = SymbolRegular.Games20,
+                        PageType = typeof(Views.Pages.Games)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Auto"],
+                        PageTag = "auto",
+                        Icon = SymbolRegular.Transmission20,
+                        PageType = typeof(Views.Pages.Automations)
+                    },
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Info"],
+                        PageTag = "info",
+                        Icon = SymbolRegular.Info20,
+                        PageType = typeof(Views.Pages.SystemInfo)
+                    }
+                };
 
                 NavigationFooter = new ObservableCollection<INavigationControl>
-            {
-                new NavigationItem()
                 {
-                    Content = "Settings",
-                    PageTag = "settings",
-                    Icon = SymbolRegular.Settings20,
-                    PageType = typeof(Views.Pages.SettingsPage)
-                }
-            };
+                    new NavigationItem()
+                    {
+                        Content = loc["Nav_Settings"],
+                        PageTag = "settings",
+                        Icon = SymbolRegular.Settings20,
+                        PageType = typeof(Views.Pages.SettingsPage)
+                    }
+                };
 
                 TrayMenuItems = new ObservableCollection<MenuItem>
-            {
-                new MenuItem
                 {
-                    Header = "Home",
-                    Tag = "tray_home"
-                }
-            };
+                    new MenuItem
+                    {
+                        Header = loc["Nav_Home"],
+                        Tag = "tray_home"
+                    }
+                };
             }
 
+            Downloads = loc["Common_Download"];
+            ApplicationTitle = loc["AppTitle"];
+        }
+
+        private void InitializeViewModel()
+        {
+            RefreshNavigationItems();
             _isInitialized = true;
         }
+
         private ICommand _navigateCommand;
         public ICommand NavigateCommand => _navigateCommand ??= new RelayCommand<string>(OnNavigate);
 

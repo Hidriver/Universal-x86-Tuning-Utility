@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32.TaskScheduler;
+using Microsoft.Win32.TaskScheduler;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -42,6 +42,12 @@ namespace Universal_x86_Tuning_Utility.Views.Pages
             cbAutoCheck.IsChecked = Settings.Default.UpdateCheck;
             cbAdaptive.IsChecked = Settings.Default.isStartAdpative;
             cbTrack.IsChecked = Settings.Default.isTrack;
+
+            string savedLanguage = Settings.Default.Language;
+            if (savedLanguage == "zh-CN")
+                rbChinese.IsChecked = true;
+            else
+                rbEnglish.IsChecked = true;
 
             checkUpdate();
         }
@@ -243,6 +249,18 @@ namespace Universal_x86_Tuning_Utility.Views.Pages
             {
                 Settings.Default.AutoReapplyTime = (int)nudAutoReapply.Value;
                 Settings.Default.Save();
+            }
+        }
+
+        private void Language_Checked(object sender, RoutedEventArgs e)
+        {
+            if (rbEnglish.IsChecked == true)
+            {
+                App.LoadLanguage("en");
+            }
+            else if (rbChinese.IsChecked == true)
+            {
+                App.LoadLanguage("zh-CN");
             }
         }
     }

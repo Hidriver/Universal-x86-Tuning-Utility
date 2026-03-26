@@ -1,48 +1,48 @@
-﻿<Page x:Class="Universal_x86_Tuning_Utility.Views.Pages.Adaptive"
+<Page x:Class="Universal_x86_Tuning_Utility.Views.Pages.Adaptive"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Universal_x86_Tuning_Utility.Views.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       d:DataContext="{d:DesignInstance local:CustomPresets, IsDesignTimeCreatable=False}"
       d:Background="{DynamicResource ApplicationBackgroundBrush}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="1000" d:DesignWidth="800"
-      Title="Adaptive Mode" Loaded="Page_Loaded">
+      Title="{DynamicResource Adaptive_Title}" Loaded="Page_Loaded">
 
     <Grid>
         <DockPanel LastChildFill="True" Margin="15,0,0,0">
             <TextBlock
             FontSize="26"
             FontWeight="Medium"
-            Text="Adaptive Mode" DockPanel.Dock="Top" Margin="3,10,0,0"/>
+            Text="{DynamicResource Adaptive_Title}" DockPanel.Dock="Top" Margin="3,10,0,0"/>
 
             <DockPanel DockPanel.Dock="Top" Margin="0
                        ,9,18,0">
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" HorizontalAlignment="Left">
-                    <TextBlock FontSize="17" FontWeight="Medium" Margin="0,0,12,0" VerticalAlignment="Center">Games/Apps:</TextBlock>
+                    <TextBlock FontSize="17" FontWeight="Medium" Margin="0,0,12,0" VerticalAlignment="Center" Text="{DynamicResource Adaptive_GamesApps}"/>
                     <ComboBox Width="225" Name="cbxPowerPreset" SelectionChanged="cbxPowerPreset_SelectionChanged" Height="37"></ComboBox>
-                    <ui:Button  HorizontalAlignment="Right" VerticalAlignment="Center" Height="37" DockPanel.Dock="Bottom" Width="50" Name="btnReloadApps" ToolTip="Updates dropdown list with games/apps" Click="btnReloadApps_Click" Margin="9,0,0,0">
+                    <ui:Button  HorizontalAlignment="Right" VerticalAlignment="Center" Height="37" DockPanel.Dock="Bottom" Width="50" Name="btnReloadApps" ToolTip="{DynamicResource Adaptive_ReloadApps}" Click="btnReloadApps_Click" Margin="9,0,0,0">
                         <ui:SymbolIcon Symbol="ArrowSync20" FontSize="24"/>
                     </ui:Button>
                 </StackPanel>
             </DockPanel>
 
-            <TextBlock DockPanel.Dock="Top" Margin="0,8,0,0" Foreground="LightGray">Notes: Wait for profiles to load before starting mode!</TextBlock>
+            <TextBlock DockPanel.Dock="Top" Margin="0,8,0,0" Foreground="LightGray" Text="{DynamicResource Adaptive_Notes}"/>
 
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0,9,9,6">
-                <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,9,9">Polling Rate</TextBlock>
+                <TextBlock FontSize="14" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,9,9" Text="{DynamicResource Adaptive_PollingRate}"/>
                 <ui:NumberBox Margin="0,0,9,9" x:Name="nudPolling" Minimum="1" Maximum="8" Value="2" SmallChange="0.05" MaxDecimalPlaces="2"></ui:NumberBox>
-                <CheckBox Name="cbAutoSwitch" Content="Auto switch app profile" Margin="0,0,9,9" VerticalAlignment="Center" Click="cbAutoSwitch_Click"/>
-                <ui:Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,9,9" Height="40" DockPanel.Dock="Bottom" Width="50" Name="btnSave" ToolTip="Save current settings" Click="btnSave_Click" IsEnabled="False">
+                <CheckBox Name="cbAutoSwitch" Content="{DynamicResource Adaptive_AutoSwitchApp}" Margin="0,0,9,9" VerticalAlignment="Center" Click="cbAutoSwitch_Click"/>
+                <ui:Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,9,9" Height="40" DockPanel.Dock="Bottom" Width="50" Name="btnSave" ToolTip="{DynamicResource Adaptive_Save}" Click="btnSave_Click" IsEnabled="False">
                     <ui:SymbolIcon Symbol="Save20" FontSize="24"/>
                 </ui:Button>
                 <ui:Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,9,9" Height="40" DockPanel.Dock="Bottom" Width="185" Name="btnStart" Click="btnStart_Click" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <ui:SymbolIcon Name="siStartIcon" Symbol="Play20" FontSize="24"/>
-                        <TextBlock Name="tbxStartText" VerticalAlignment="Center" Margin="9,0,0,0">Start Adaptive Mode</TextBlock>
+                        <TextBlock Name="tbxStartText" VerticalAlignment="Center" Margin="9,0,0,0" Text="{DynamicResource Adaptive_Start}"/>
                     </StackPanel>
                 </ui:Button>
             </StackPanel>
@@ -65,11 +65,11 @@
                                     <TextBlock
                                         FontSize="14"
                                         FontWeight="Medium"
-                                        Text="Auto Switch" />
+                                        Text="{DynamicResource Adaptive_AutoSwitch}" />
                                     <TextBlock
                                         FontSize="12"
                                         Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                        Text="Enable this preset for automatic switching. Can be used to exclude games/apps from auto switch."/>
+                                        Text="{DynamicResource Adaptive_AutoSwitchDesc}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                                     <ui:ToggleSwitch Name="tsAutoSwitch" Margin="0,0,9,0"/>
@@ -91,11 +91,11 @@
                                 <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Basic Adaptive Mode Settings" />
+                            Text="{DynamicResource Adaptive_BasicSettings}" />
                                 <TextBlock
                             FontSize="12"
                             Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="Provides the ability to toggle/set adaptive mode targets."/>
+                            Text="{DynamicResource Adaptive_BasicSettingsDesc}"/>
                             </StackPanel>
                         </Grid>
                     </ui:CardExpander.Header>
@@ -103,8 +103,8 @@
                     <StackPanel>
                         <StackPanel Margin="0,-8,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Max Temperature Limit (°C)</TextBlock>
-                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the max temperature limit adaptive mode is allowed to set" VerticalAlignment="Bottom" />
+                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MaxTempLimit}"/>
+                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MaxTempLimitTip}" VerticalAlignment="Bottom" />
                             </StackPanel>
 
                             <Grid Margin="0,8,0,0">
@@ -120,8 +120,8 @@
                         </StackPanel>
                         <StackPanel Margin="0,8,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Max Power Limit (W)</TextBlock>
-                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the max power limit adpative mode is allowed to set" VerticalAlignment="Bottom"/>
+                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MaxPowerLimit}"/>
+                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MaxPowerLimitTip}" VerticalAlignment="Bottom"/>
                             </StackPanel>
                             <Grid Margin="0,8,0,0">
                                 <Grid.ColumnDefinitions>
@@ -136,8 +136,8 @@
                         </StackPanel>
                         <StackPanel Margin="0,8,0,0" Name="spCO">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Max Curve Optimiser Limit (-)</TextBlock>
-                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the max negative curve optimiser limit adpative mode is allowed to set" VerticalAlignment="Bottom"/>
+                                <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MaxCurveOptLimit}"/>
+                                <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MaxCurveOptLimitTip}" VerticalAlignment="Bottom"/>
                             </StackPanel>
                             <Grid Margin="0,8,0,0">
                                 <Grid.ColumnDefinitions>
@@ -164,14 +164,14 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                <TextBlock
+                                    <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Turbo Boost Overdrive iGPU Settings" />
-                                <TextBlock
+                            Text="{DynamicResource Adaptive_TBOiGPUSettings}" />
+                                    <TextBlock
                             FontSize="12"
                             Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="Provides the ability to toggle/set Turbo Boost Overdrive iGPU targets."/>
+                            Text="{DynamicResource Adaptive_TBOiGPUSettingsDesc}"/>
                             </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                                     <ui:ToggleSwitch Name="tsTBOiGPU" Margin="0,0,9,0"/>
@@ -182,8 +182,8 @@
                     <StackPanel>
                         <StackPanel Margin="0,-8,0,0">
                             <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Maximum iGPU Clock Limit (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the maximum iGPU clock speed adaptive mode is allowed to set" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MaxiGPUClockLimit}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MaxiGPUClockLimitTip}" VerticalAlignment="Bottom" />
                             </StackPanel>
 
                             <Grid Margin="0,8,0,0">
@@ -200,8 +200,8 @@
 
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Minimum iGPU Clock Limit (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the minimum iGPU clock speed adaptive mode is allowed to set" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MiniGPUClockLimit}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MiniGPUClockLimitTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -217,8 +217,8 @@
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Minimum CPU Clock Limit (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the minimum CPU clock speed at which adaptive mode will start throttling iGPU clocks" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_MinCPUClockLimit}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_MinCPUClockLimitTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -232,7 +232,7 @@
                                     <Slider Name="sdMinCpuClk" Value="{Binding ElementName=nudMinCpuClk, Path=Value}" Maximum="4000" Minimum="1000" Grid.Column="2" Margin="12,0,0,0" TickFrequency="25" VerticalAlignment="Center" IsSnapToTickEnabled="True" TouchDown="SizeSlider_TouchDown"/>
                                 </Grid>
                             </StackPanel>
-                            <TextBlock Margin="0,8,0,0" Foreground="LightGray">Notes: Ensure you balance CPU and iGPU clocks out for the best performance!</TextBlock>
+                            <TextBlock Margin="0,8,0,0" Foreground="LightGray" Text="{DynamicResource Adaptive_BalanceNote}"/>
                         </StackPanel>
                 </ui:CardExpander>
                     <ui:CardExpander Name="sdUXTUSR"
@@ -249,11 +249,11 @@ Icon="Image24" Margin="0,8,15,0">
                                     <TextBlock
                 FontSize="14"
                 FontWeight="Medium"
-                Text="UXTU Super Resolution" />
+                Text="{DynamicResource Adaptive_UXTUSR}" />
                                     <TextBlock
                 FontSize="12"
                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                Text="Powered by a customised version of Magpie. Use Alt+F to toggle."/>
+                Text="{DynamicResource Adaptive_UXTUSRDesc}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                                     <ui:ToggleSwitch Name="tsUXTUSR" Margin="0,0,9,0"/>
@@ -269,8 +269,8 @@ Icon="Image24" Margin="0,8,15,0">
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Name="cbVSync" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="Enable VSync" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="Synchronises capture frame rate to display refresh rate." VerticalAlignment="Center" />
+                                        <CheckBox Name="cbVSync" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="{DynamicResource Adaptive_EnableVSync}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="{DynamicResource Adaptive_EnableVSyncTip}" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -281,16 +281,16 @@ Icon="Image24" Margin="0,8,15,0">
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Width="130" Name="cbAutoCap" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="Auto Recapture" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="Auto recaptures the previous capture window after focus was lost and restored." VerticalAlignment="Center" />
+                                        <CheckBox Width="130" Name="cbAutoCap" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="{DynamicResource Adaptive_AutoRecapture}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="{DynamicResource Adaptive_AutoRecaptureTip}" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
 
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Capture Sharpness (%)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls UXTU Super Resolution capture image sharpness." VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_CaptureSharpness}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_CaptureSharpnessTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -305,8 +305,8 @@ Icon="Image24" Margin="0,8,15,0">
 
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Resolution Scale</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the resolution of the window being captured. Use application controlled if you do not want UXTU to override the window resolution. Not all applications will be compatible with this mode!" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_ResolutionScale}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_ResolutionScaleTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -316,12 +316,12 @@ Icon="Image24" Margin="0,8,15,0">
                                     <ComboBox
 Grid.Column="1"
 VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" Height="37">
-                                        <ComboBoxItem>Application Controlled</ComboBoxItem>
-                                        <ComboBoxItem>Ultra Quality (77%)</ComboBoxItem>
-                                        <ComboBoxItem>Quality (67%)</ComboBoxItem>
-                                        <ComboBoxItem>Balanced (59%)</ComboBoxItem>
-                                        <ComboBoxItem>Performance (50%)</ComboBoxItem>
-                                        <ComboBoxItem>Ultra Performance (33%)</ComboBoxItem>
+                                        <ComboBoxItem Content="{DynamicResource Adaptive_AppControlled}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_UltraQuality}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_Quality}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_AdaptiveBalanced}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_AdaptivePerformance}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_UltraPerformance}"/>
                                     </ComboBox>
                                 </Grid>
                             </StackPanel>
@@ -341,11 +341,11 @@ VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" H
                                     <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Radeon™ Graphics Options" />
+                            Text="{DynamicResource Adaptive_RadeonOptions}" />
                                     <TextBlock
                             FontSize="12"
                             Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="Provides the ability to customise driver graphics options"/>
+                            Text="{DynamicResource Adaptive_RadeonOptionsDesc}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                                     <ui:ToggleSwitch Name="tsRadeonGraph" Margin="0,0,9,0"/>
@@ -361,16 +361,16 @@ VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" H
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Name="cbAntiLag" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="Radeon™ Anti-Lag" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="Enables AMD Radeon™ Anti-Lag within drivers on supported hardware." VerticalAlignment="Center" />
+                                        <CheckBox Name="cbAntiLag" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="{DynamicResource Adaptive_RadeonAntiLag}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="{DynamicResource Adaptive_RadeonAntiLagTip}" VerticalAlignment="Center" />
                                     </StackPanel>
 
                                 </Grid>
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Radeon™ Super Resolution (%)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Enables AMD Radeon™ Super Resolution within drivers on supported hardware. Also allows you to set a custom sharpness effect." VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_RadeonSR}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_RadeonSRTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -386,8 +386,8 @@ VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" H
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Radeon™ Boost (%)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Enables AMD Radeon™ Boost within drivers on supported hardware. Also allows you to set a minimum resolution in %." VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_RadeonBoost}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_RadeonBoostTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -403,8 +403,8 @@ VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" H
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Radeon™ Image Sharpening (%)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Enables AMD Radeon™ Image Sharpening within drivers on supported hardware. Allows you to set a custom sharpness effect." VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_RadeonImageSharp}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_RadeonImageSharpTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -426,8 +426,8 @@ VerticalAlignment="Center" SelectedIndex="0" MinWidth="138" Name="cbxResScale" H
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Name="cbSync" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="Enhanced Sync" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="Enables AMD Enhanced Sync within drivers on supported hardware." VerticalAlignment="Center" />
+                                        <CheckBox Name="cbSync" Checked="cb_Checked" FontSize="13" FontWeight="DemiBold" Content="{DynamicResource Adaptive_EnhancedSync}" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                                        <ui:SymbolIcon Symbol="Info20" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="6,0,0,-4" ToolTip="{DynamicResource Adaptive_EnhancedSyncTip}" VerticalAlignment="Center" />
                                     </StackPanel>
 
                                 </Grid>
@@ -448,11 +448,11 @@ Icon="Pulse20" Margin="0,8,15,0">
                                     <TextBlock
                 FontSize="14"
                 FontWeight="Medium"
-                Text="NVIDIA GPU Tuning" />
+                Text="{DynamicResource Adaptive_NVIDIAGPU}" />
                                     <TextBlock
                 FontSize="12"
                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                Text="Provides the ability to set tune your NVIDIA GPU."/>
+                Text="{DynamicResource Adaptive_NVIDIAGPUDesc}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
@@ -464,8 +464,8 @@ Icon="Pulse20" Margin="0,8,15,0">
                         <StackPanel>
                             <StackPanel Margin="0,-8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">Frequency-Adjusted Voltage Limit (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the maximum voltage your GPU will run within the Frequency/Voltage curve based on clock speed. You can undervolt your NVIDIA GPU by lowering this clock speed below stock and increasing the core clock offset. Start at your GPU's rated boost clock and work down. To reset it, set it to the maximum possible clock the slider allows." VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_FreqVoltageLimit}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_FreqVoltageLimitTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -479,8 +479,8 @@ Icon="Pulse20" Margin="0,8,15,0">
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">GPU Core Clock Offset (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the clock offset for your NVIDIA GPU's core clock" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_GPUCoreClockOffset}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_GPUCoreClockOffsetTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -494,8 +494,8 @@ Icon="Pulse20" Margin="0,8,15,0">
                             </StackPanel>
                             <StackPanel Margin="0,8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">GPU Memory Clock (MHz)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the clock offset for your NVIDIA GPU's VRAM clock" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_GPUMemoryClock}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_GPUMemoryClockTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">
@@ -508,10 +508,10 @@ Icon="Pulse20" Margin="0,8,15,0">
                                 </Grid>
                             </StackPanel>
 
-                            <TextBlock 
+                            <TextBlock
                 FontSize="12"
                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                Text="Warning: We are not liable for any damages to hardware or resulting instabilities caused by adjustment of frequencies and voltages." TextWrapping="WrapWithOverflow" Margin="0,8,0,0"/>
+                Text="{DynamicResource Adaptive_NVIDIADisclaimer}" TextWrapping="WrapWithOverflow" Margin="0,8,0,0"/>
                         </StackPanel>
                     </ui:CardExpander>
                     <ui:CardControl Name="sdAsusPower"
@@ -527,19 +527,19 @@ Icon="Power20" Margin="0,8,15,0">
                                     <TextBlock
                 FontSize="14"
                 FontWeight="Medium"
-                Text="ASUS Power Profile" />
+                Text="{DynamicResource Adaptive_ASUSPower}" />
                                     <TextBlock
                 FontSize="12"
                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                Text="Provides the ability to set an ASUS power profile. This will override Armoury Crate!"/>
+                Text="{DynamicResource Adaptive_ASUSPowerDesc}"/>
                                 </StackPanel>
                                 <ComboBox
             Grid.Column="1"
             VerticalAlignment="Center" SelectedIndex="0" MinWidth="164" Name="cbxAsusPower" Height="37">
-                                    <ComboBoxItem>AC Controlled</ComboBoxItem>
-                                    <ComboBoxItem>Silent</ComboBoxItem>
-                                    <ComboBoxItem>Performance</ComboBoxItem>
-                                    <ComboBoxItem>Turbo</ComboBoxItem>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_ACControlled}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_Silent}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_ASUSPerformance}"/>
+                                    <ComboBoxItem Content="{DynamicResource Adaptive_Turbo}"/>
                                 </ComboBox>
 
                             </Grid>
@@ -560,11 +560,11 @@ Icon="Pulse20" Margin="0,8,15,0">
                                     <TextBlock
                 FontSize="14"
                 FontWeight="Medium"
-                Text="Static RTSS Frame Rate" />
+                Text="{DynamicResource Adaptive_StaticRTSS}" />
                                     <TextBlock
                 FontSize="12"
                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                Text="Provides the ability to set a custom RTSS frame limit."/>
+                Text="{DynamicResource Adaptive_StaticRTSSDesc}"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
@@ -576,8 +576,8 @@ Icon="Pulse20" Margin="0,8,15,0">
                         <StackPanel>
                             <StackPanel Margin="0,-8,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}">RTSS Frame Limit (FPS)</TextBlock>
-                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="Controls the set FPS limit in RTSS" VerticalAlignment="Bottom" />
+                                    <TextBlock FontWeight="DemiBold" FontSize="13" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Text="{DynamicResource Adaptive_RTSSFrameLimit}"/>
+                                    <ui:SymbolIcon Symbol="Info20" Margin="6,0,0,-2" Foreground="{DynamicResource TextFillColorPrimaryBrush}" ToolTip="{DynamicResource Adaptive_RTSSFrameLimitTip}" VerticalAlignment="Bottom" />
                                 </StackPanel>
 
                                 <Grid Margin="0,8,0,0">

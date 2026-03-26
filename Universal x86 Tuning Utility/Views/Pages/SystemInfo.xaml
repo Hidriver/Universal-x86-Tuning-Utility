@@ -1,4 +1,4 @@
-﻿<Page x:Class="Universal_x86_Tuning_Utility.Views.Pages.SystemInfo"
+<Page x:Class="Universal_x86_Tuning_Utility.Views.Pages.SystemInfo"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,7 +17,7 @@
             <TextBlock
             FontSize="26"
             FontWeight="Medium"
-            Text="System Info" DockPanel.Dock="Top" Margin="3,10,0,0"/>
+            Text="{DynamicResource SysInfo_Title}" DockPanel.Dock="Top" Margin="3,10,0,0"/>
             
             <ScrollViewer Name="mainScroll" Margin="0,12,0,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="False" PanningMode="VerticalFirst" Stylus.IsFlicksEnabled="False" Stylus.IsTouchFeedbackEnabled="True" IsDeferredScrollingEnabled="False" DockPanel.Dock="Top" ScrollChanged="mainScroll_ScrollChanged">
                 <StackPanel Name="mainCon">
@@ -35,7 +35,7 @@
                                     <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Device Information"  />
+                            Text="{DynamicResource SysInfo_DeviceInfo}" />
 
                                 </StackPanel>
                             </Grid>
@@ -44,9 +44,9 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Margin="24,0,12,0" Width="80">
-                                    <TextBlock FontWeight="DemiBold">Name</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Producer</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Model</TextBlock>
+                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource SysInfo_Name}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Producer}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Model}"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Name="tbDeviceName"></TextBlock>
@@ -70,7 +70,7 @@
                                     <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Processor Information" />
+                            Text="{DynamicResource SysInfo_ProcessorInfo}" />
                                    
                                 </StackPanel>
                             </Grid>
@@ -79,17 +79,17 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Margin="24,0,12,0" Width="80">
-                                    <TextBlock FontWeight="DemiBold">Processor</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Producer</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Name="tbCode">Codename</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Caption</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Cores</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Threads</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Base Clock</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">L1 Cache</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">L2 Cache</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">L3 Cache</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Instructions</TextBlock>
+                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource SysInfo_Processor}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Producer}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Codename}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Caption}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Cores}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Threads}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_BaseClock}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_L1Cache}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_L2Cache}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_L3Cache}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Instructions}"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Name="tbProcessor"></TextBlock>
@@ -121,7 +121,7 @@
                                     <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Memory Information" />
+                            Text="{DynamicResource SysInfo_MemoryInfo}" />
 
                                 </StackPanel>
                             </Grid>
@@ -130,11 +130,11 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Margin="24,0,12,0" Width="80">
-                                    <TextBlock FontWeight="DemiBold">Memory</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Producer</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Model</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Width</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Modules</TextBlock>
+                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource SysInfo_Memory}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Producer}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Model}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Width}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Modules}"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Name="tbRAM"></TextBlock>
@@ -145,7 +145,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Name="spRAMTime" Margin="24,8,12,0">
-                            <TextBlock  FontWeight="DemiBold">RAM Timings:</TextBlock>
+                            <TextBlock  FontWeight="DemiBold" Text="{DynamicResource SysInfo_RAMTimings}"/>
                                 <Grid Margin="-5,8,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*" />
@@ -193,99 +193,99 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="BGS:" Margin="5"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource SysInfo_BGS_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BGS}" Margin="5"/>
-                                    <TextBlock Grid.Row="0" Grid.Column="2" Text="BGSA:" Margin="5"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{DynamicResource SysInfo_BGSA_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding BGSA}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Preamble2T:" Margin="5"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource SysInfo_Preamble2T_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Preamble2T}" Margin="5"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="GDM:" Margin="5"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{DynamicResource SysInfo_GDM_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding GDM}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Cmd2T:" Margin="5"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource SysInfo_Cmd2T_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Cmd2T}" Margin="5"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="tRCDWR:" Margin="5"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{DynamicResource SysInfo_tRCDWR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding tRCDWR}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="tRCDRD:" Margin="5"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource SysInfo_tRCDRD_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding tRCDRD}" Margin="5"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="2" Text="tRAS:" Margin="5"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{DynamicResource SysInfo_tRAS_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding tRAS}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="tCL:" Margin="5"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource SysInfo_tCL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding tCL}" Margin="5"/>
-                                    <TextBlock Grid.Row="4" Grid.Column="2" Text="tRPPB:" Margin="5"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="2" Text="{DynamicResource SysInfo_tRPPB_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding tRPPB}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="tRP:" Margin="5"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{DynamicResource SysInfo_tRP_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding tRP}" Margin="5"/>
-                                    <TextBlock Grid.Row="5" Grid.Column="2" Text="tRCPB:" Margin="5"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="2" Text="{DynamicResource SysInfo_tRCPB_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding tRCPB}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="tRC:" Margin="5"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{DynamicResource SysInfo_tRC_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding tRC}" Margin="5"/>
-                                    <TextBlock Grid.Row="6" Grid.Column="2" Text="tRTP:" Margin="5"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="2" Text="{DynamicResource SysInfo_tRTP_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="6" Grid.Column="3" Text="{Binding tRTP}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="tRRDDLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{DynamicResource SysInfo_tRRDDLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding tRRDDLR}" Margin="5"/>
-                                    <TextBlock Grid.Row="7" Grid.Column="2" Text="tRRDL:" Margin="5"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="2" Text="{DynamicResource SysInfo_tRRDL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="7" Grid.Column="3" Text="{Binding tRRDL}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="tRRDS:" Margin="5"/>
+                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{DynamicResource SysInfo_tRRDS_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding tRRDS}" Margin="5"/>
-                                    <TextBlock Grid.Row="8" Grid.Column="2" Text="tFAWDLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="8" Grid.Column="2" Text="{DynamicResource SysInfo_tFAWDLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="8" Grid.Column="3" Text="{Binding tFAWDLR}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="tFAWSLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{DynamicResource SysInfo_tFAWSLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding tFAWSLR}" Margin="5"/>
-                                    <TextBlock Grid.Row="9" Grid.Column="2" Text="tFAW:" Margin="5"/>
+                                    <TextBlock Grid.Row="9" Grid.Column="2" Text="{DynamicResource SysInfo_tFAW_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="9" Grid.Column="3" Text="{Binding tFAW}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="10" Grid.Column="0" Text="tWTRL:" Margin="5"/>
+                                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{DynamicResource SysInfo_tWTRL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding tWTRL}" Margin="5"/>
-                                    <TextBlock Grid.Row="10" Grid.Column="2" Text="tWTRS:" Margin="5"/>
+                                    <TextBlock Grid.Row="10" Grid.Column="2" Text="{DynamicResource SysInfo_tWTRS_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="10" Grid.Column="3" Text="{Binding tWTRS}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="11" Grid.Column="0" Text="tCWL:" Margin="5"/>
+                                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{DynamicResource SysInfo_tCWL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="11" Grid.Column="1" Text="{Binding tCWL}" Margin="5"/>
-                                    <TextBlock Grid.Row="11" Grid.Column="2" Text="tWR:" Margin="5"/>
+                                    <TextBlock Grid.Row="11" Grid.Column="2" Text="{DynamicResource SysInfo_tWR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="11" Grid.Column="3" Text="{Binding tWR}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="12" Grid.Column="0" Text="tRCPage:" Margin="5"/>
+                                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{DynamicResource SysInfo_tRCPage_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="12" Grid.Column="1" Text="{Binding tRCPage}" Margin="5"/>
-                                    <TextBlock Grid.Row="12" Grid.Column="2" Text="tRDRDBAN:" Margin="5"/>
+                                    <TextBlock Grid.Row="12" Grid.Column="2" Text="{DynamicResource SysInfo_tRDRDBAN_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="12" Grid.Column="3" Text="{Binding tRDRDBAN}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="13" Grid.Column="0" Text="tRDRDSCL:" Margin="5"/>
+                                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{DynamicResource SysInfo_tRDRDSCL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="13" Grid.Column="1" Text="{Binding tRDRDSCL}" Margin="5"/>
-                                    <TextBlock Grid.Row="13" Grid.Column="2" Text="tRDRDSCDLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="13" Grid.Column="2" Text="{DynamicResource SysInfo_tRDRDSCDLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="13" Grid.Column="3" Text="{Binding tRDRDSCDLR}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="14" Grid.Column="0" Text="tRDRDSC:" Margin="5"/>
+                                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{DynamicResource SysInfo_tRDRDSC_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="14" Grid.Column="1" Text="{Binding tRDRDSC}" Margin="5"/>
-                                    <TextBlock Grid.Row="14" Grid.Column="2" Text="tRDRDSD:" Margin="5"/>
+                                    <TextBlock Grid.Row="14" Grid.Column="2" Text="{DynamicResource SysInfo_tRDRDSD_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="14" Grid.Column="3" Text="{Binding tRDRDSD}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="15" Grid.Column="0" Text="tRDRDDD:" Margin="5"/>
+                                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{DynamicResource SysInfo_tRDRDDD_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="15" Grid.Column="1" Text="{Binding tRDRDDD}" Margin="5"/>
-                                    <TextBlock Grid.Row="15" Grid.Column="2" Text="tWRWRBAN:" Margin="5"/>
+                                    <TextBlock Grid.Row="15" Grid.Column="2" Text="{DynamicResource SysInfo_tWRWRBAN_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="15" Grid.Column="3" Text="{Binding tWRWRBAN}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="16" Grid.Column="0" Text="tWRWRSCL:" Margin="5"/>
+                                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{DynamicResource SysInfo_tWRWRSCL_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="16" Grid.Column="1" Text="{Binding tWRWRSCL}" Margin="5"/>
-                                    <TextBlock Grid.Row="16" Grid.Column="2" Text="tWRWRSCDLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="16" Grid.Column="2" Text="{DynamicResource SysInfo_tWRWRSCDLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="16" Grid.Column="3" Text="{Binding tWRWRSCDLR}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="17" Grid.Column="0" Text="tWRWRSC:" Margin="5"/>
+                                    <TextBlock Grid.Row="17" Grid.Column="0" Text="{DynamicResource SysInfo_tWRWRSC_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="17" Grid.Column="1" Text="{Binding tWRWRSC}" Margin="5"/>
-                                    <TextBlock Grid.Row="17" Grid.Column="2" Text="tWRWRSD:" Margin="5"/>
+                                    <TextBlock Grid.Row="17" Grid.Column="2" Text="{DynamicResource SysInfo_tWRWRSD_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="17" Grid.Column="3" Text="{Binding tWRWRSD}" Margin="5"/>
 
-                                    <TextBlock Grid.Row="18" Grid.Column="0" Text="tWRWRDD:" Margin="5"/>
+                                    <TextBlock Grid.Row="18" Grid.Column="0" Text="{DynamicResource SysInfo_tWRWRDD_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="18" Grid.Column="1" Text="{Binding tWRWRDD}" Margin="5"/>
-                                    <TextBlock Grid.Row="18" Grid.Column="2" Text="tWRRDSCDLR:" Margin="5"/>
+                                    <TextBlock Grid.Row="18" Grid.Column="2" Text="{DynamicResource SysInfo_tWRRDSCDLR_Label}" Margin="5"/>
                                     <TextBlock Grid.Row="18" Grid.Column="3" Text="{Binding tWRRDSCDLR}" Margin="5"/>
 
                                     <TextBlock Grid.Row="19" Grid.Column="0" Text="tRDWR:" Margin="5"/>
@@ -393,7 +393,7 @@
                                     <TextBlock
                             FontSize="14"
                             FontWeight="Medium"
-                            Text="Battery Information"  />
+                            Text="{DynamicResource SysInfo_BatteryInfo}" />
 
                                 </StackPanel>
                             </Grid>
@@ -402,10 +402,10 @@
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Margin="24,0,12,0" Width="80">
-                                    <TextBlock FontWeight="DemiBold">Health</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Cycles</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Capacity</TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0">Charge Rate</TextBlock>
+                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource SysInfo_Health}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Cycles}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_Capacity}"/>
+                                    <TextBlock FontWeight="DemiBold" Margin="0,8,0,0" Text="{DynamicResource SysInfo_ChargeRate}"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Name="tbHealth"></TextBlock>

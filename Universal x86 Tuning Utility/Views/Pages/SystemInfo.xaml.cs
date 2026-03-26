@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,7 +99,6 @@ namespace Universal_x86_Tuning_Utility.Views.Pages
                 else
                 {
                     tbCodename.Visibility = Visibility.Collapsed;
-                    tbCode.Visibility = Visibility.Collapsed;
                 }
 
                 tbProducer.Text = manufacturer;
